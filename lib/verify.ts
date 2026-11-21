@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {merchants} from '../data/merchants';
+import {candidates,emptyFilters,parseQuery,reason,route,Behavior} from './recommendation';
+const b:Behavior={favorites:[1,2,9,13],today:[2],views:{3:3}};
+assert.equal(merchants.length,24);assert.equal(new Set(merchants.map(m=>m.id)).size,24);
+const narrow=candidates(merchants,emptyFilters,b,'walk10');
+assert.equal(narrow.length,8);assert.equal(candidates(merchants,emptyFilters,b,'walk20').length,18);assert.equal(candidates(merchants,emptyFilters,b,'transit').length,24);
+assert(candidates(merchants,{...emptyFilters,budget:20},b,'transit').every(m=>m.price<=20));
+assert(candidates(merchants,{...emptyFilters,scenes:['奶茶咖啡','美味大餐']},b,'transit').every(m=>['奶茶','咖啡','火锅','烤肉'].includes(m.category)));
+assert.equal(candidates(merchants,{...emptyFilters,budget:1},b,'transit').length,0);
+assert(candidates(merchants,{...emptyFilters,open:true,discount:true,favorite:true},b,'transit').every(m=>m.open&&m.discount&&b.favorites.includes(m.id)));
+assert.deepEqual(parseQuery('30 元以内，想吃面，晚上还营业'),{budget:30,noodles:true,evening:true});assert.equal(parseQuery('帮我规划非常复杂的一天'),null);
+assert(reason(merchants[0],b,'walk10').includes('之前收藏'));assert(reason(merchants[1],b,'walk10').includes('今天刚收藏'));assert(reason(merchants[2],b,'walk10').includes('多次查看'));assert(reason(merchants[3],b,'walk10').includes('常去'));assert(reason(merchants[14],b,'walk20').includes('更优惠'));assert(reason(merchants[6],b,'walk10').includes('步行很近'));
+assert.notEqual(route(merchants[0],'滨河家园').home,route(merchants[0],'梧桐公寓').home);
+assert(merchants.filter(m=>m.sponsored).length>=3);assert(merchants.filter(m=>m.previous).length>=3);assert(merchants.filter(m=>m.transit.homeTransfers===0).length>=4);
+console.log('PASS: 24 商家数据、三种范围、预算与多选并集、组合过滤、空结果、搜索解析、六类理由、地址路线变化、广告数据检查。');
