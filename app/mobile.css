@@ -1,0 +1,55 @@
+/* Mobile-only geometry; the desktop design and original recommendation stylesheet stay intact. */
+html,body{width:100%;min-width:0;margin:0}html{overflow-x:hidden}
+body{overflow-wrap:break-word}.dss{min-width:0;min-height:100dvh}
+.rm-coupon-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid #f0e4ea;flex-shrink:0;background:white}
+.rm-coupon-header button,.rm-demo-back{color:#ee315b;background:#fff0f4;border-radius:8px;padding:11px 13px;font-size:13px;min-height:44px}
+.rm-coupon-header span{color:#947b89;font-size:12px;white-space:nowrap}
+.rm-dialog.rm-applicable-dialog{display:flex;flex-direction:column;overflow:hidden;max-height:88dvh}
+.rm-coupon-list-scroll,.rm-coupon-detail-scroll{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;min-height:0;padding:16px 0 3px;scrollbar-gutter:stable}
+.rm-coupon-list-scroll[hidden]{display:none}
+.rm-coupon-list-scroll h2{font-size:21px}.rm-coupon-list-scroll h3{font-size:15px;margin:20px 0 10px}
+.rm-coupon-list-scroll p,.rm-coupon-detail-scroll>p{font-size:12px;line-height:1.8;color:#938391;margin:10px 0}
+.rm-coupon-list-scroll>small{font-size:11px;color:#a18a99}
+.rm-applicable-card>img{width:38px;height:46px;border-radius:7px;object-fit:cover;flex-shrink:0}
+.rm-coupon-photo{display:block;width:100%;height:110px;object-fit:contain;background:#fff5f8;border-radius:12px;margin:14px 0}
+.rm-demo-unavailable{font-size:12px;line-height:1.8;background:#fff5eb;color:#9a6949;border-radius:8px;padding:12px;margin:7px 0}
+.rm-pin[data-demo=true]{border-style:dashed}
+@media(max-width:760px){
+ .dss main{min-width:0;width:100%;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+ .dss .topbar,.dss.real-map-page .topbar{height:auto;min-height:64px;padding:calc(12px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));gap:8px}
+ .dss .wordmark{min-width:0;gap:8px}.dss .wordmark span{font-size:10px;padding-left:8px}.dss .demo-pill{display:none}
+ .dss .rail{height:calc(66px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+ .dss .rail-links button{min-height:48px}
+ .dss .store-home,.dss .history-page,.dss .account-page{min-width:0;max-width:100%}
+ .dss .store-search>div{min-width:0;flex:1}.dss .store-search input{min-width:0;width:100%}
+ .dss .store-tabs{gap:12px;flex-wrap:wrap}.dss .store-tabs>span{margin-left:0}
+ .dss .product-info{min-width:0}.dss .product-price{flex-wrap:wrap;gap:4px}.dss .history-item{min-width:0;flex-wrap:wrap}
+ .dss .modal-backdrop,.dss .overlay{padding:max(10px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) max(10px,env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
+ .dss .modal{max-width:100%;max-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 24px);overflow:auto;overscroll-behavior:contain}
+ .dss .real-commute{min-width:0;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+ .dss .rm-heading{gap:10px}.dss .rm-heading>div{min-width:0}.dss .rm-heading>button{min-height:44px;min-width:0}
+ .dss .rm-search-row form{min-width:0;flex-basis:calc(100% - 62px)}.dss .rm-search-row input{font-size:16px;width:0}
+ .dss .rm-search-row>button{min-height:44px}.dss .rm-search-row>button:last-child{max-width:100%;white-space:normal;text-align:left;justify-content:flex-start}
+ .dss .rm-categories{width:100%;max-width:100%;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}.dss .rm-categories button{min-height:40px}
+ .dss .rm-ranges{max-width:100%;display:flex}.dss .rm-ranges button{min-width:0;min-height:40px;white-space:normal}
+ .dss .rm-features{display:flex;min-width:0;overflow-x:auto;scroll-snap-type:x proximity;padding:0 0 6px;overscroll-behavior-x:contain}
+ .dss .rm-features>article{flex:0 0 72%;scroll-snap-align:start;min-width:0}.dss .rm-feature-main{min-height:112px;width:100%;flex-direction:row;padding:12px;gap:9px}.dss .rm-feature-main>div{min-width:0}.dss .rm-feature-main h3{padding-right:24px}.dss .rm-feature-main>img{width:38px;height:46px}.dss .rm-feature-detail{min-height:36px}
+ .dss .rm-wallet{max-width:100%}.dss .rm-coupons{overscroll-behavior-x:contain}.dss .rm-coupons>button{min-height:70px}
+ .dss .rm-workspace,.dss .rm-workspace.with-panel{min-width:0;grid-template-columns:minmax(0,1fr)}.dss .rm-map-wrap{min-width:0}
+ .dss .rm-map{height:clamp(430px,58dvh,560px);min-height:430px;touch-action:pan-x pan-y pinch-zoom}.dss .rm-map-surface{touch-action:none}
+ .dss .rm-map-state>button{min-height:40px}.dss .rm-map-actions button{min-height:40px}
+ .dss .rm-pin.route-along,.dss .rm-pin.route-hot{max-width:124px;white-space:normal;line-height:1.45;font-size:10px;padding:7px 9px;min-height:36px}
+ .dss .rm-marker-legend{bottom:30px;font-size:10px;max-width:calc(100% - 52px)}.dss .rm-marker-legend small{font-size:9px}
+ .dss .rm-discovery-popover{width:calc(100% - 20px);left:10px;bottom:80px;max-height:calc(100% - 140px);overscroll-behavior:contain}.dss .rm-popover-actions{flex-wrap:wrap}.dss .rm-popover-actions button{min-height:44px}
+ .dss .rm-backdrop{padding:max(10px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) max(10px,env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px));align-items:center;overscroll-behavior:contain}
+ .dss .rm-dialog{padding:18px 16px;max-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 24px);width:100%;overscroll-behavior:contain}
+ .dss .rm-dialog input:not([type=checkbox]),.dss .rm-dialog select,.dss .rm-dialog textarea{font-size:16px!important;scroll-margin-block:80px}
+ .dss .rm-dialog-close{min-height:44px;min-width:44px}.dss .rm-dialog h2{overflow-wrap:anywhere;font-size:20px}
+ .dss .rm-applicable-card{display:grid;grid-template-columns:30px minmax(0,1fr);gap:8px;padding:11px}.dss .rm-applicable-card>img{width:30px;height:38px}.dss .rm-applicable-card>button:last-child{grid-column:2;justify-self:start;min-height:40px;padding:8px 12px}.dss .rm-applicable-card b{font-size:14px}
+ .dss .rm-coupon-header{position:sticky;top:0;z-index:2}.dss .rm-coupon-header button{font-size:12px}.dss .rm-coupon-detail-scroll .rm-local-offer button{min-height:44px}
+ .dss .rm-toast,.dss .toast,.dss .planner-message{bottom:calc(80px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 24px);overflow-wrap:anywhere}
+}
+.rm-applicable-card>button:nth-child(2){display:block;text-align:left;min-width:0;flex:1;padding:0}
+.rm-applicable-card>button:nth-child(2)>b,.rm-applicable-card>button:nth-child(2)>span,.rm-applicable-card>button:nth-child(2)>small,.rm-applicable-card>button:nth-child(2)>em{display:block}
+.rm-pin.route-along,.rm-pin.route-hot{width:132px;min-width:132px;white-space:normal;line-height:1.45;text-align:center}
+@media(max-width:760px){.dss .rm-pin.route-along,.dss .rm-pin.route-hot{width:116px;min-width:116px}}
