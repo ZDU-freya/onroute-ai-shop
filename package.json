@@ -6,7 +6,8 @@
     "dev": "WATCHPACK_POLLING=true next dev --hostname 0.0.0.0",
     "build": "next build",
     "check": "tsc --noEmit",
-    "test": "node --import tsx lib/verify.ts && node --import tsx lib/planning-verify.ts"
+    "test": "node --import tsx lib/verify.ts && node --import tsx lib/planning-verify.ts && node --import tsx components/nearby/verify.ts && node --import tsx lib/amap/real-verify.ts && node --import tsx lib/amap/supplement-verify.ts",
+    "start": "next start --hostname 127.0.0.1"
   },
   "dependencies": {
     "next": "^15.5.0",

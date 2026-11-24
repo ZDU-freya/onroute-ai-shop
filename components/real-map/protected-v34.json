@@ -1,0 +1,23 @@
+{
+  "blocks": [
+    {
+      "name": "原顺路买模块",
+      "start": " <div className=\"rm-along-title\"",
+      "end": "</aside>}",
+      "hash": "56feab206c6acbcc868d800894357321bd6bb7789f294d153bbf77435cc14bd1"
+    },
+    {
+      "name": "原推荐筛选逻辑",
+      "start": " const geometry=current.legs",
+      "end": " }catch(e)",
+      "hash": "514f0c9a8839dff7b4131edafe1662cd93a20eaa1cc1c08dcd500ab40bb5eea3"
+    },
+    {
+      "name": "原三张精选卡",
+      "start": " <div className=\"rm-feature-heading\"",
+      "end": " <div className=\"rm-wallet\"",
+      "hash": "88878d2e0a58f2392d6437273eee701f6ae3abc253e9aa076057f3ddf5635e63"
+    }
+  ],
+  "stylesheetHash": "255b6ef78f6b8a67b21a9d70362e75c7b485fc187227e22e77d94029a800edda"
+}

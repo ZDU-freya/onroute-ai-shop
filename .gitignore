@@ -5,3 +5,6 @@ out/
 .openai/*.zip
 
 .next-dev/
+
+.env*
+!.env.example
