@@ -6,7 +6,7 @@
     "dev": "WATCHPACK_POLLING=true next dev --hostname 0.0.0.0",
     "build": "next build",
     "check": "tsc --noEmit",
-    "test": "tsx lib/verify.ts"
+    "test": "node --import tsx lib/verify.ts && node --import tsx lib/planning-verify.ts"
   },
   "dependencies": {
     "next": "^15.5.0",

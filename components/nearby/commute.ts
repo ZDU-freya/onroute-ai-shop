@@ -1,0 +1,9 @@
+import {Merchant} from '../../data/merchants';
+import {allMerchants,calculate,Config,newStop,Stop,activities} from '../../data/planning';
+export function distanceTier(m:Pick<Merchant,'walk'>){if(!Number.isFinite(m.walk)||m.walk<0)return null;return m.walk<=10?{minutes:30,amount:2,label:'近距离'}:m.walk<=20?{minutes:60,amount:6,label:'中距离'}:{minutes:120,amount:8,label:'远距离'}}
+export type RouteContext={sessionId:string;merchantIds:number[]};
+export function randomAmount(merchant:number,session:string){let hash=2166136261;for(const ch of `${session}:${merchant}`)hash=Math.imul(hash^ch.charCodeAt(0),16777619);return 2+(hash>>>0)%4}
+export function alongEligible(m:Merchant){return m.id%3!==0&&m.price>=5&&m.open&&m.discount&&(!activities.find(a=>a.merchant===m.id)||activities.find(a=>a.merchant===m.id)!.available)}
+export function routeCandidates(stops:Stop[],config:Config){const base=calculate(stops,config);const last=allMerchants.find(m=>m.id===stops[stops.length-1]?.merchant);return allMerchants.filter(m=>!stops.some(s=>s.merchant===m.id)&&m.open&&m.discount).map(m=>{const next=calculate([...stops,newStop(m.category,m)],config);const delta=next.total-base.total;const deviation=last?Math.abs(m.y-last.y)+Math.max(0,last.x-m.x):0;return {merchant:m,delta,deviation,next}}).filter(c=>c.deviation<=450&&c.delta<=65&&!c.next.problems.some(p=>/营业|预约|最多支持/.test(p))).sort((a,b)=>a.delta-b.delta||a.deviation-b.deviation)}
+
+export function localizedMerchant(m:Merchant,origin:string):Merchant{if(origin==='云杉创意园'||!Number.isFinite(m.walk))return m;const [x,y]=origin==='梧桐共享空间'?[420,250]:[650,450];const previous=Math.abs(m.x-550)+Math.abs(m.y-365);const current=Math.abs(m.x-x)+Math.abs(m.y-y);const walk=Math.max(1,Math.round(m.walk+(current-previous)/65));return {...m,walk,walk10:walk<=10,walk20:walk<=20}}

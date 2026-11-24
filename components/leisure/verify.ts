@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {defaultConfig,newStop} from '../../data/planning';
+import {combination,totals,match,pool,allMerchants,library} from './model';
+const c={...defaultConfig,kind:'weekend' as const,district:1,theme:'都市享受',departure:'14:00',transport:'步行',shopping:40,budget:200,people:2,available:300};
+const a=combination(c);assert.equal(a.length,3);assert(!totals(a,c).problems.length);
+assert.notDeepEqual(combination(c,1).map(s=>s.merchant),a.map(s=>s.merchant));
+const m=match('烘焙',a,c)!;assert(m);const added=[...a,newStop('烘焙',m)];assert.equal(totals(added,c).timeline.length,4);assert(totals(added,c).perPerson>totals(a,c).perPerson);
+assert.equal(match('密室',a,c),null);assert(totals(a,{...c,budget:1}).problems.some(p=>p.includes('超预算')));assert(totals(a,{...c,available:30}).problems.some(p=>p.includes('可用时间')));
+assert(totals(a,{...c,shopping:0}).problems.some(p=>p.includes('自由购物')));
+assert(totals(a,{...c,people:9}).problems.some(p=>p.includes('最多支持')));
+const replaced=a.map((s,i)=>i===1?{...newStop('烘焙',m),id:s.id}:s);assert.equal(replaced[0].merchant,a[0].merchant);assert.equal(replaced[2].merchant,a[2].merchant);assert.notEqual(totals(replaced,c).total,totals(a,c).total);
+assert(Object.values(library).flat().length>=20);for(const s of a)assert(allMerchants.some(m=>m.id===s.merchant));
+console.log('PASS V3.1：主题两套组合、添加替换联动、空匹配、超时、超预算、购物待定、人数约束、其他站点保留。');
