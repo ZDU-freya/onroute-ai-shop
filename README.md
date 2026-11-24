@@ -1,5 +1,7 @@
 # 抖省省 · AI 顺路买 V3.4（高德真实地图版）
 
+OnRoute AI Shop is an AI-powered local shopping and lifestyle platform that integrates personalized recommendations, real-time map navigation, and commute-based discounts.
+
 在原项目上增量改造。首页、原演示商家、收藏、订单和核销继续保留；AI 页面只保留「AI 顺路买」。地图、POI、位置和交通时间来自高德；优惠、商品、停留和购买为本地原型配置。
 
 ## 启动与配置
